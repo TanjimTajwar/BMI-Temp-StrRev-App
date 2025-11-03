@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                       Shadow(
                         offset: const Offset(2, 2),
                         blurRadius: 4,
-                        color: Colors.black.withValues(alpha: 0.3),
+                        color: Colors.black.withOpacity(0.3),
                       ),
                     ],
                   ),
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                   'Three Powerful Tools in One App',
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white.withValues(alpha: 0.9),
+                    color: Colors.white.withOpacity(0.9),
                     fontWeight: FontWeight.w300,
                   ),
                   textAlign: TextAlign.center,
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                 _FeatureCard(
                   title: 'BMI Calculator',
                   icon: Icons.monitor_weight,
-                  color: const Color(0xFF6366f1),
+                  color: Theme.of(context).colorScheme.primary,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
                 _FeatureCard(
                   title: 'String Reverser',
                   icon: Icons.text_fields,
-                  color: const Color(0xFF10b981),
+                  color: Theme.of(context).colorScheme.secondary,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
                 _FeatureCard(
                   title: 'Temperature Converter',
                   icon: Icons.thermostat,
-                  color: const Color(0xFFf59e0b),
+                  color: Theme.of(context).colorScheme.tertiary,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -143,7 +143,7 @@ class _FeatureCard extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [
                 color,
-                color.withValues(alpha: 0.8),
+                color.withOpacity(0.8),
               ],
             ),
           ),
@@ -152,7 +152,7 @@ class _FeatureCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.2),
+                  color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
@@ -174,7 +174,7 @@ class _FeatureCard extends StatelessWidget {
               ),
               Icon(
                 Icons.arrow_forward_ios,
-                color: Colors.white.withValues(alpha: 0.8),
+                color: Colors.white.withOpacity(0.8),
                 size: 20,
               ),
             ],

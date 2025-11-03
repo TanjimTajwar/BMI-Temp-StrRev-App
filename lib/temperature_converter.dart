@@ -30,15 +30,16 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
   }
 
   Color _getUnitColor(String unit) {
+    final scheme = Theme.of(context).colorScheme;
     switch (unit) {
       case 'Celsius':
-        return Colors.blue;
+        return scheme.primary;
       case 'Fahrenheit':
-        return Colors.orange;
+        return scheme.tertiary;
       case 'Kelvin':
-        return Colors.purple;
+        return scheme.secondary;
       default:
-        return Colors.grey;
+        return scheme.outline;
     }
   }
 
@@ -47,9 +48,9 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
     
     if (input == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter a valid temperature value'),
-          backgroundColor: Colors.red,
+        SnackBar(
+          content: const Text('Please enter a valid temperature value'),
+          backgroundColor: Theme.of(context).colorScheme.error,
         ),
       );
       return;
@@ -128,7 +129,7 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.3),
+              Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
               Theme.of(context).colorScheme.surface,
             ],
           ),
@@ -267,7 +268,7 @@ class _TemperatureConverterState extends State<TemperatureConverter> {
               if (_convertedValue != null)
                 Card(
                   elevation: 6,
-                  color: _getUnitColor(_toUnit).withValues(alpha: 0.1),
+                  color: _getUnitColor(_toUnit).withOpacity(0.1),
                   child: Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Column(

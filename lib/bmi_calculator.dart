@@ -24,9 +24,9 @@ class _BMICalculatorState extends State<BMICalculator> {
 
     if (height == null || weight == null || age == null || _selectedGender == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please fill in all fields and select gender'),
-          backgroundColor: Colors.red,
+        SnackBar(
+          content: const Text('Please fill in all fields and select gender'),
+          backgroundColor: Theme.of(context).colorScheme.error,
         ),
       );
       return;
@@ -34,9 +34,9 @@ class _BMICalculatorState extends State<BMICalculator> {
 
     if (height <= 0 || weight <= 0 || age <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter valid positive numbers'),
-          backgroundColor: Colors.red,
+        SnackBar(
+          content: const Text('Please enter valid positive numbers'),
+          backgroundColor: Theme.of(context).colorScheme.error,
         ),
       );
       return;
@@ -79,11 +79,12 @@ class _BMICalculatorState extends State<BMICalculator> {
   }
 
   Color _getBMIColor() {
-    if (_bmi == null) return Colors.grey;
-    if (_bmi! < 18.5) return Colors.blue;
-    if (_bmi! < 25) return Colors.green;
-    if (_bmi! < 30) return Colors.orange;
-    return Colors.red;
+    final scheme = Theme.of(context).colorScheme;
+    if (_bmi == null) return scheme.outline;
+    if (_bmi! < 18.5) return scheme.tertiary; // Underweight
+    if (_bmi! < 25) return scheme.primary;   // Normal
+    if (_bmi! < 30) return scheme.secondary; // Overweight
+    return scheme.error;                     // Obese
   }
 
   @override
@@ -107,7 +108,7 @@ class _BMICalculatorState extends State<BMICalculator> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.3),
+              Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
               Theme.of(context).colorScheme.surface,
             ],
           ),
@@ -257,7 +258,7 @@ class _BMICalculatorState extends State<BMICalculator> {
               if (_bmi != null)
                 Card(
                   elevation: 6,
-                  color: _getBMIColor().withValues(alpha: 0.1),
+                  color: _getBMIColor().withOpacity(0.1),
                   child: Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Column(

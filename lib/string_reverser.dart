@@ -16,10 +16,10 @@ class _StringReverserState extends State<StringReverser> {
     
     if (input.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter some text to reverse'),
-          backgroundColor: Colors.orange,
-          duration: Duration(seconds: 2),
+        SnackBar(
+          content: const Text('Please enter some text to reverse'),
+          backgroundColor: Theme.of(context).colorScheme.error,
+          duration: const Duration(seconds: 2),
         ),
       );
       return;
@@ -56,7 +56,7 @@ class _StringReverserState extends State<StringReverser> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.3),
+              Theme.of(context).colorScheme.primaryContainer.withOpacity(0.3),
               Theme.of(context).colorScheme.surface,
             ],
           ),
@@ -71,7 +71,7 @@ class _StringReverserState extends State<StringReverser> {
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+                    color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -167,7 +167,7 @@ class _StringReverserState extends State<StringReverser> {
                               color: Theme.of(context).colorScheme.surface,
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),
+                                color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
                               ),
                             ),
                             child: Text(
