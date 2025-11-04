@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'home.dart';
+import '../Homepage/home.dart';
 import 'theme.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class TrioAngleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Trio-Angle',
+      title: 'Multi App',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
@@ -27,4 +27,3 @@ class TrioAngleApp extends StatelessWidget {
     );
   }
 }
-

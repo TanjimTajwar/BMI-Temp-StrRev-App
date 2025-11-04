@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'bmi_calculator.dart';
-import 'string_reverser.dart';
-import 'temperature_converter.dart';
+
+import '../TaskFor_5_11_2025/atm_simulator.dart';
+import '../TaskFor_5_11_2025/faraid_calculator.dart';
+import '../TaskFor_5_11_2025/hijri_age_calculator.dart';
+import '../TaskFor_5_11_2025/loan_calculator.dart';
+
+import '../TaskFor_3_11_2025/bmi_calculator.dart';
+import '../TaskFor_3_11_2025/string_reverser.dart';
+import '../TaskFor_3_11_2025/temperature_converter.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,43 +16,43 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Theme.of(context).colorScheme.primary,
-              Theme.of(context).colorScheme.secondary,
-              Theme.of(context).colorScheme.tertiary,
+              Color(0xFF00796B),
+              Color(0xFF26A69A),
+              Color(0xFF80CBC4),
             ],
           ),
         ),
         child: SafeArea(
-          child: Padding(
+          child: SingleChildScrollView(
             padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // App Title
+                // 🌟 App Title
                 Text(
-                  'Welcome to Trio-Angle',
+                  'Welcome Multi App',
                   style: TextStyle(
-                    fontSize: 36,
+                    fontSize: 34,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     shadows: [
                       Shadow(
                         offset: const Offset(2, 2),
-                        blurRadius: 4,
-                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 6,
+                        color: Colors.black.withOpacity(0.4),
                       ),
                     ],
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Text(
-                  'Three Powerful Tools in One App',
+                  'My Task for 6th Semester',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white.withOpacity(0.9),
@@ -54,13 +60,77 @@ class HomePage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 60),
-                
-                // BMI Calculator Card
+                const SizedBox(height: 40),
+
+                // 💵 ATM Simulator
+                _FeatureCard(
+                  title: 'ATM Simulator',
+                  icon: Icons.account_balance,
+                  color: Colors.deepPurple,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ATMSimulator(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 20),
+
+                // ⚖️ Faraid Calculator
+                _FeatureCard(
+                  title: 'Faraid (Islamic Inheritance)',
+                  icon: Icons.family_restroom,
+                  color: Colors.teal,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FaraidCalculator(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 20),
+
+                // 🌙 Hijri Age Calculator
+                _FeatureCard(
+                  title: 'Hijri Age Calculator',
+                  icon: Icons.calendar_month,
+                  color: Colors.indigo,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HijriAgeCalculator(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 20),
+
+                // 💰 Loan Calculator
+                _FeatureCard(
+                  title: 'Loan Monthly Payment',
+                  icon: Icons.calculate,
+                  color: Colors.orangeAccent,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoanCalculator(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 20),
+
+                // 🧍 BMI Calculator
                 _FeatureCard(
                   title: 'BMI Calculator',
                   icon: Icons.monitor_weight,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Colors.green,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -70,13 +140,13 @@ class HomePage extends StatelessWidget {
                     );
                   },
                 ),
-                const SizedBox(height: 24),
-                
-                // String Reverser Card
+                const SizedBox(height: 20),
+
+                // 🔤 String Reverser
                 _FeatureCard(
                   title: 'String Reverser',
                   icon: Icons.text_fields,
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Colors.pinkAccent,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -86,13 +156,13 @@ class HomePage extends StatelessWidget {
                     );
                   },
                 ),
-                const SizedBox(height: 24),
-                
-                // Temperature Converter Card
+                const SizedBox(height: 20),
+
+                // 🌡️ Temperature Converter
                 _FeatureCard(
                   title: 'Temperature Converter',
                   icon: Icons.thermostat,
-                  color: Theme.of(context).colorScheme.tertiary,
+                  color: Colors.cyan,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -111,6 +181,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
+// 🌟 Custom Feature Card Widget
 class _FeatureCard extends StatelessWidget {
   final String title;
   final IconData icon;
@@ -135,7 +206,7 @@ class _FeatureCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(20),
         child: Container(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(22),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             gradient: LinearGradient(
@@ -143,7 +214,7 @@ class _FeatureCard extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [
                 color,
-                color.withOpacity(0.8),
+                color.withOpacity(0.85),
               ],
             ),
           ),
@@ -157,7 +228,7 @@ class _FeatureCard extends StatelessWidget {
                 ),
                 child: Icon(
                   icon,
-                  size: 40,
+                  size: 38,
                   color: Colors.white,
                 ),
               ),
@@ -166,7 +237,7 @@ class _FeatureCard extends StatelessWidget {
                 child: Text(
                   title,
                   style: const TextStyle(
-                    fontSize: 24,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -184,4 +255,3 @@ class _FeatureCard extends StatelessWidget {
     );
   }
 }
-
